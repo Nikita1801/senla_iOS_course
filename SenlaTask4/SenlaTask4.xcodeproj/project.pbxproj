@@ -12,8 +12,8 @@
 		A70EC89D27F5D91100F6C190 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70EC89C27F5D91100F6C190 /* MainViewController.swift */; };
 		A70EC89F27F5DBCB00F6C190 /* SecondaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70EC89E27F5DBCB00F6C190 /* SecondaryViewController.swift */; };
 		A70EC8A127F5FAAB00F6C190 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70EC8A027F5FAAB00F6C190 /* SettingsViewController.swift */; };
+		A7641BFE2812E0B300D98D11 /* Array+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7641BFD2812E0B300D98D11 /* Array+Extension.swift */; };
 		A7B6946227F5B83200DEE06E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7B6946127F5B83200DEE06E /* AppDelegate.swift */; };
-		A7B6946627F5B83200DEE06E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7B6946527F5B83200DEE06E /* ViewController.swift */; };
 		A7B6946B27F5B83300DEE06E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A7B6946A27F5B83300DEE06E /* Assets.xcassets */; };
 		A7B6946E27F5B83300DEE06E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A7B6946C27F5B83300DEE06E /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
@@ -24,9 +24,9 @@
 		A70EC89C27F5D91100F6C190 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		A70EC89E27F5DBCB00F6C190 /* SecondaryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondaryViewController.swift; sourceTree = "<group>"; };
 		A70EC8A027F5FAAB00F6C190 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		A7641BFD2812E0B300D98D11 /* Array+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Extension.swift"; sourceTree = "<group>"; };
 		A7B6945E27F5B83200DEE06E /* SenlaTask4.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SenlaTask4.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A7B6946127F5B83200DEE06E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		A7B6946527F5B83200DEE06E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		A7B6946A27F5B83300DEE06E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A7B6946D27F5B83300DEE06E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A7B6946F27F5B83300DEE06E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -63,7 +63,6 @@
 			isa = PBXGroup;
 			children = (
 				A7B6946127F5B83200DEE06E /* AppDelegate.swift */,
-				A7B6946527F5B83200DEE06E /* ViewController.swift */,
 				A7B6946A27F5B83300DEE06E /* Assets.xcassets */,
 				A7B6946C27F5B83300DEE06E /* LaunchScreen.storyboard */,
 				A7B6946F27F5B83300DEE06E /* Info.plist */,
@@ -72,6 +71,7 @@
 				A70EC89C27F5D91100F6C190 /* MainViewController.swift */,
 				A70EC8A027F5FAAB00F6C190 /* SettingsViewController.swift */,
 				A70EC89E27F5DBCB00F6C190 /* SecondaryViewController.swift */,
+				A7641BFD2812E0B300D98D11 /* Array+Extension.swift */,
 			);
 			path = SenlaTask4;
 			sourceTree = "<group>";
@@ -149,8 +149,8 @@
 				A70EC89927F5D81200F6C190 /* TabBarController.swift in Sources */,
 				A70EC89B27F5D8B000F6C190 /* NavigationController.swift in Sources */,
 				A70EC8A127F5FAAB00F6C190 /* SettingsViewController.swift in Sources */,
-				A7B6946627F5B83200DEE06E /* ViewController.swift in Sources */,
 				A7B6946227F5B83200DEE06E /* AppDelegate.swift in Sources */,
+				A7641BFE2812E0B300D98D11 /* Array+Extension.swift in Sources */,
 				A70EC89D27F5D91100F6C190 /* MainViewController.swift in Sources */,
 				A70EC89F27F5DBCB00F6C190 /* SecondaryViewController.swift in Sources */,
 			);

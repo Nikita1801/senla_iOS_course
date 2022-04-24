@@ -5,32 +5,31 @@
 //  Created by Никита Макаревич on 31.03.2022.
 //
 
-import Foundation
 import UIKit
 
 
-class SettingsViewController : ViewController {
-    weak var delegate : MainViewController?
+final class SettingsViewController : UIViewController {
+    weak var delegate : SettingsDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
   
         configureView()
+        makeConstraints()
     }
     
-    private lazy var verticalStackView : UIStackView = {
+    private let verticalStackView : UIStackView = {
         var verticalStackView = UIStackView()
         verticalStackView.axis = .vertical
         verticalStackView.alignment = .center
         verticalStackView.distribution = .fillEqually
         verticalStackView.spacing = 20
-        verticalStackView.spacing = UIStackView.spacingUseSystem
         
         return verticalStackView
     }()
     
-    private lazy var languageLabel : UILabel = {
+    private let languageLabel : UILabel = {
         let languageLabel = UILabel()
         languageLabel.text = "Choose your language (RU / EN)"
         languageLabel.font = UIFont.boldSystemFont(ofSize: 24)
@@ -53,7 +52,7 @@ class SettingsViewController : ViewController {
         return languageSwitch
     } ()
     
-    private lazy var rulesLabel : UILabel = {
+    private let rulesLabel : UILabel = {
         let rulesLabel = UILabel()
         rulesLabel.text = "Choose your game style (Draw / Without Draw)"
         rulesLabel.font = UIFont.boldSystemFont(ofSize: 24)
@@ -62,6 +61,7 @@ class SettingsViewController : ViewController {
         
         return rulesLabel
     } ()
+    
     
     private lazy var rulesSwitch : UISwitch = {
         let rulesSwitch = UISwitch()
@@ -78,7 +78,7 @@ class SettingsViewController : ViewController {
      
 }
 
-extension SettingsViewController{
+private extension SettingsViewController{
     
     func configureView() {
         view.backgroundColor = .white
@@ -87,9 +87,7 @@ extension SettingsViewController{
         verticalStackView.addArrangedSubview(rulesLabel)
         verticalStackView.addArrangedSubview(rulesSwitch)
         view.addSubview(verticalStackView)
-        
-        makeConstraints()
-    }
+        }
     
     func makeConstraints() {
         verticalStackView.translatesAutoresizingMaskIntoConstraints = false
@@ -132,6 +130,5 @@ extension SettingsViewController{
     
     @objc func switchLanguageDidTaped(_ sender : UISwitch!) {
         delegate?.changeLanguage(lanEn: sender.isOn)
-        print(delegate?.changeLanguage(lanEn: sender.isOn))
     }
 }

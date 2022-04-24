@@ -5,23 +5,23 @@
 //  Created by Никита Макаревич on 31.03.2022.
 //
 
-import Foundation
 import UIKit
 
-protocol MainVCDelegate : AnyObject{
+protocol SettingsDelegate : AnyObject{
     func changeRules(gameMode : Bool)
     func changeLanguage(lanEn : Bool)
     var rulesWithoutRepeat : Bool {get set}
     var languageIsEnglish : Bool {get set}
 }
 
-class MainViewController : UIViewController, MainVCDelegate {
+final class MainViewController : UIViewController {
     
     var languageIsEnglish: Bool = false
     var rulesWithoutRepeat : Bool = false
 
     let options = ["Камень", "Ножницы", "Бумага"]
     var randomItem : String = ""
+    var currentItem : String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,7 +30,7 @@ class MainViewController : UIViewController, MainVCDelegate {
         configureItem()
     }
     
-    private lazy var verticalStackView : UIStackView = {
+    let verticalStackView : UIStackView = {
         var verticalStackView = UIStackView()
         verticalStackView.axis = .vertical
         verticalStackView.alignment = .center
@@ -41,8 +41,8 @@ class MainViewController : UIViewController, MainVCDelegate {
         return verticalStackView
     }()
     
-    private lazy var stoneButton : UIButton = {
-        let stoneButton = UIButton(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
+    lazy var stoneButton : UIButton = {
+        let stoneButton = UIButton()
         stoneButton.center = view.center
         stoneButton.setImage(UIImage(named: "stoneImage.png"), for: .normal)
         stoneButton.setTitle("Камень", for: .normal)
@@ -51,8 +51,8 @@ class MainViewController : UIViewController, MainVCDelegate {
         return stoneButton
     } ()
     
-    private lazy var scissorButton : UIButton = {
-        let scissorButton = UIButton(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
+    lazy var scissorButton : UIButton = {
+        let scissorButton = UIButton()
         scissorButton.center = view.center
         scissorButton.setImage(UIImage(named: "scissorsImage.png"), for: .normal)
         scissorButton.setTitle("Ножницы", for: .normal)
@@ -61,8 +61,8 @@ class MainViewController : UIViewController, MainVCDelegate {
         return scissorButton
     } ()
     
-    private lazy var paperButton : UIButton = {
-        let paperButton = UIButton(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
+    lazy var paperButton : UIButton = {
+        let paperButton = UIButton()
         view.addSubview(paperButton)
         paperButton.center = view.center
         paperButton.setImage(UIImage(named: "paperImage.png"), for: .normal)
@@ -72,7 +72,7 @@ class MainViewController : UIViewController, MainVCDelegate {
         return paperButton
     } ()
     
-    private lazy var titleLabel : UILabel = {
+     let titleLabel : UILabel = {
         let titleLabel = UILabel()
         titleLabel.text = "Chose your item"
         titleLabel.font = UIFont.boldSystemFont(ofSize: 30)
@@ -82,89 +82,94 @@ class MainViewController : UIViewController, MainVCDelegate {
         return titleLabel
     } ()
     
-    @objc func itemButtonPressed(_ sender: UIButton) {
-        let currentItem = sender.currentTitle!
-        randomItem = options.randomElement()!
-        print(rulesWithoutRepeat)
-        if (rulesWithoutRepeat) {
-            if (randomItem == currentItem) {
-                var optionsWithoutRepeat = options
-                optionsWithoutRepeat.remove(object: randomItem)
-                randomItem = optionsWithoutRepeat.randomElement()!
-            }
-        }
-        
-        switch languageIsEnglish {
-        case false:
-            if (currentItem == "Ножницы" && randomItem == "Бумага") {
-                titleLabel.text = "Победа! Противник выбрал бумагу"
-            }
-            else if (currentItem == "Ножницы"  && randomItem == "Камень"){
-                titleLabel.text = "Проигрыш. Противник выбрал камень"
-            }
-            else if (currentItem == "Бумага" && randomItem == "Камень") {
-                titleLabel.text = "Победа! противник выбрал камень"
-            }
-            else if (currentItem == "Бумага" && randomItem == "Ножницы") {
-                titleLabel.text = "Проигрыш. Противник выбрал ножницы"
-            }
-            else if (currentItem == "Камень" && randomItem == "Ножницы") {
-                titleLabel.text = "Победа! Противник выбрал ножницы"
-            }
-            else if (currentItem == "Камень" && randomItem == "Бумага") {
-                titleLabel.text = "Проигрыш. Противник выбрал бумагу"
-            }
-            else if (currentItem == randomItem) {
-                titleLabel.text = "Ничья! Противник думает как ты"
-            }
-        case true:
-            if (currentItem == "Ножницы" && randomItem == "Бумага") {
-                titleLabel.text = "Win! Opponent chose paper"
-            }
-            else if (currentItem == "Ножницы"  && randomItem == "Камень"){
-                titleLabel.text = "Lose. Opponent chose stone"
-            }
-            else if (currentItem == "Бумага" && randomItem == "Камень") {
-                titleLabel.text = "Win! Opponent chose stone"
-            }
-            else if (currentItem == "Бумага" && randomItem == "Ножницы") {
-                titleLabel.text = "Lose. Opponent chose scissor"
-            }
-            else if (currentItem == "Камень" && randomItem == "Ножницы") {
-                titleLabel.text = "Win! Opponent chose scissor"
-            }
-            else if (currentItem == "Камень" && randomItem == "Бумага") {
-                titleLabel.text = "Lose. Opponent chose paper"
-            }
-            else if (currentItem == randomItem) {
-                titleLabel.text = "Draw! Opponent think like you"
-            }
-        }
-        
-        
-    }
+   
     
     private func configureItem() {
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Settings", style: .done, target: self, action: #selector(didTapButton(_:)))
     }
+    
+    override func viewDidLayoutSubviews() {
+        scissorButton.frame = CGRect(x: 0, y: 0, width: 50 , height: 50)
+        paperButton.frame = CGRect(x: 0, y: 0, width: 50, height: 50)
+        stoneButton.frame = CGRect(x: 0, y: 0, width: 50, height: 50)
+    }
+}
+
+private extension MainViewController {
+    
     @objc func didTapButton(_ sender : UIBarButtonItem!) {
         let settingsVC = SettingsViewController()
         settingsVC.delegate = self
         navigationController?.pushViewController(settingsVC, animated: false)
     }
     
-
-}
-                
-extension Array where Element: Equatable {
-        
-    mutating func remove(object: Element) {
-        guard let index = firstIndex(of: object) else {return}
-        remove(at: index)
+    @objc func itemButtonPressed(_ sender: UIButton) {
+        currentItem = sender.currentTitle ?? ""
+        randomItem = options.randomElement() ?? options[1]
+        print(rulesWithoutRepeat)
+        if (rulesWithoutRepeat) {
+            if (randomItem == currentItem) {
+                var optionsWithoutRepeat = options
+                optionsWithoutRepeat.remove(object: randomItem)
+                randomItem = optionsWithoutRepeat.randomElement() ?? optionsWithoutRepeat[0]
+            }
         }
-}
-
-extension MainViewController {
+        
+        if (languageIsEnglish){
+            resultEN()
+        }
+        else {resultRU()}
+    }
+    
+    private func resultEN(){
+        switch (currentItem, randomItem) {
+        case ("Ножницы", "Бумага"):
+            titleLabel.text = "Win! Opponent chose paper"
+        case ("Ножницы", "Камень"):
+            titleLabel.text = "Lose. Opponent chose stone"
+        case ("Бумага", "Камень"):
+            titleLabel.text = "Win! Opponent chose stone"
+        case ("Бумага", "Ножницы"):
+            titleLabel.text = "Lose. Opponent chose scissor"
+        case ("Камень", "Ножницы"):
+            titleLabel.text = "Win! Opponent chose scissor"
+        case ("Камень", "Бумага"):
+            titleLabel.text = "Lose. Opponent chose paper"
+        case ("Камень", "Камень"):
+            titleLabel.text = "Draw! Opponent think like you"
+        case ("Бумага", "Бумага"):
+            titleLabel.text = "Draw! Opponent think like you"
+        case ("Ножницы", "Ножницы"):
+            titleLabel.text = "Draw! Opponent think like you"
+        case (_, _):
+            print("")
+        }
+    }
+    
+    private func resultRU(){
+        switch (currentItem, randomItem) {
+        case ("Ножницы", "Бумага"):
+            titleLabel.text = "Победа! Противник выбрал бумагу"
+        case ("Ножницы", "Камень"):
+            titleLabel.text = "Проигрыш. Противник выбрал камень"
+        case ("Бумага", "Камень"):
+            titleLabel.text = "Победа! противник выбрал камень"
+        case ("Бумага", "Ножницы"):
+            titleLabel.text = "Проигрыш. Противник выбрал ножницы"
+        case ("Камень", "Ножницы"):
+            titleLabel.text = "Победа! Противник выбрал ножницы"
+        case ("Камень", "Бумага"):
+            titleLabel.text = "Проигрыш. Противник выбрал бумагу"
+        case ("Камень", "Камень"):
+            titleLabel.text = "Ничья! Противник думает как ты"
+        case ("Бумага", "Бумага"):
+            titleLabel.text = "Ничья! Противник думает как ты"
+        case ("Ножницы", "Ножницы"):
+            titleLabel.text = "Ничья! Противник думает как ты"
+        case (_, _):
+            print("")
+        }
+    }
     
     func configureView() {
         view.backgroundColor = .white
@@ -207,6 +212,10 @@ extension MainViewController {
         ])
     }
     
+   
+}
+
+extension MainViewController: SettingsDelegate {
     func changeRules(gameMode: Bool) {
         rulesWithoutRepeat = gameMode
     }
