@@ -16,12 +16,16 @@ protocol SettingsDelegate : AnyObject{
 
 final class MainViewController : UIViewController {
     
+    weak var resultDelegate: ResultsDelegate?
+    
     var languageIsEnglish: Bool = false
     var rulesWithoutRepeat : Bool = false
 
-    let options = ["Камень", "Ножницы", "Бумага"]
+    private let options = ["Камень", "Ножницы", "Бумага"]
     var randomItem : String = ""
     var currentItem : String = ""
+    
+    var currentResult : String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,7 +34,7 @@ final class MainViewController : UIViewController {
         configureItem()
     }
     
-    let verticalStackView : UIStackView = {
+    private let verticalStackView : UIStackView = {
         var verticalStackView = UIStackView()
         verticalStackView.axis = .vertical
         verticalStackView.alignment = .center
@@ -72,7 +76,7 @@ final class MainViewController : UIViewController {
         return paperButton
     } ()
     
-     let titleLabel : UILabel = {
+     private let titleLabel : UILabel = {
         let titleLabel = UILabel()
         titleLabel.text = "Chose your item"
         titleLabel.font = UIFont.boldSystemFont(ofSize: 30)
@@ -119,28 +123,42 @@ private extension MainViewController {
             resultEN()
         }
         else {resultRU()}
+        
+        // Send data to StatisticsVC
+        resultDelegate?.appendResult(newResult: currentResult)
+        print(resultDelegate?.appendResult(newResult: currentResult))
     }
+    
     
     private func resultEN(){
         switch (currentItem, randomItem) {
         case ("Ножницы", "Бумага"):
             titleLabel.text = "Win! Opponent chose paper"
+            currentResult = "Win! Opponent chose paper"
         case ("Ножницы", "Камень"):
             titleLabel.text = "Lose. Opponent chose stone"
+            currentResult = "Lose. Opponent chose stone"
         case ("Бумага", "Камень"):
             titleLabel.text = "Win! Opponent chose stone"
+            currentResult = "Win! Opponent chose stone"
         case ("Бумага", "Ножницы"):
             titleLabel.text = "Lose. Opponent chose scissor"
+            currentResult = "Lose. Opponent chose scissor"
         case ("Камень", "Ножницы"):
             titleLabel.text = "Win! Opponent chose scissor"
+            currentResult = "Win! Opponent chose scissor"
         case ("Камень", "Бумага"):
             titleLabel.text = "Lose. Opponent chose paper"
+            currentResult = "Lose. Opponent chose paper"
         case ("Камень", "Камень"):
             titleLabel.text = "Draw! Opponent think like you"
+            currentResult = "Draw! Opponent think like you"
         case ("Бумага", "Бумага"):
             titleLabel.text = "Draw! Opponent think like you"
+            currentResult = "Draw! Opponent think like you"
         case ("Ножницы", "Ножницы"):
             titleLabel.text = "Draw! Opponent think like you"
+            currentResult = "Draw! Opponent think like you"
         case (_, _):
             print("")
         }
@@ -150,22 +168,31 @@ private extension MainViewController {
         switch (currentItem, randomItem) {
         case ("Ножницы", "Бумага"):
             titleLabel.text = "Победа! Противник выбрал бумагу"
+            currentResult = "Победа! Противник выбрал бумагу"
         case ("Ножницы", "Камень"):
             titleLabel.text = "Проигрыш. Противник выбрал камень"
+            currentResult = "Проигрыш. Противник выбрал камень"
         case ("Бумага", "Камень"):
             titleLabel.text = "Победа! противник выбрал камень"
+            currentResult = "Победа! противник выбрал камень"
         case ("Бумага", "Ножницы"):
             titleLabel.text = "Проигрыш. Противник выбрал ножницы"
+            currentResult = "Проигрыш. Противник выбрал ножницы"
         case ("Камень", "Ножницы"):
             titleLabel.text = "Победа! Противник выбрал ножницы"
+            currentResult = "Победа! Противник выбрал ножницы"
         case ("Камень", "Бумага"):
             titleLabel.text = "Проигрыш. Противник выбрал бумагу"
+            currentResult = "Проигрыш. Противник выбрал бумагу"
         case ("Камень", "Камень"):
             titleLabel.text = "Ничья! Противник думает как ты"
+            currentResult = "Ничья! Противник думает как ты"
         case ("Бумага", "Бумага"):
             titleLabel.text = "Ничья! Противник думает как ты"
+            currentResult = "Ничья! Противник думает как ты"
         case ("Ножницы", "Ножницы"):
             titleLabel.text = "Ничья! Противник думает как ты"
+            currentResult = "Ничья! Противник думает как ты"
         case (_, _):
             print("")
         }

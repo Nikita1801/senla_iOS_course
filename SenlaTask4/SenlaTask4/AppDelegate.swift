@@ -17,16 +17,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let navigationController = NavigationController()
         let secondaryViewController = SecondaryViewController()
+        let gameHistoryViewContorller = StatisticsViewController()
         
+        gameHistoryViewContorller.title = "Game history"
         navigationController.title = "Scissors paper stone"
         secondaryViewController.title = "Dice"
         
         let mainViewController = MainViewController()
         mainViewController.title = "Scissors paper stone"
         
+        
+        let statisticsViewController = StatisticsViewController()
+        mainViewController.resultDelegate = statisticsViewController
+        
         navigationController.viewControllers = [mainViewController]
         
-        tabBarController.viewControllers = [navigationController, secondaryViewController]
+        tabBarController.viewControllers = [navigationController, secondaryViewController, gameHistoryViewContorller]
         
         let appearance = UINavigationBarAppearance()
         appearance.backgroundColor = .systemGray6

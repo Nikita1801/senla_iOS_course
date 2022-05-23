@@ -12,7 +12,10 @@
 		A70EC89D27F5D91100F6C190 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70EC89C27F5D91100F6C190 /* MainViewController.swift */; };
 		A70EC89F27F5DBCB00F6C190 /* SecondaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70EC89E27F5DBCB00F6C190 /* SecondaryViewController.swift */; };
 		A70EC8A127F5FAAB00F6C190 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70EC8A027F5FAAB00F6C190 /* SettingsViewController.swift */; };
+		A71115A82819BC11002A90E1 /* CollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71115A72819BC11002A90E1 /* CollectionViewLayout.swift */; };
+		A71115B9283541E3002A90E1 /* HistoryGameTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71115B8283541E3002A90E1 /* HistoryGameTableViewCell.swift */; };
 		A7641BFE2812E0B300D98D11 /* Array+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7641BFD2812E0B300D98D11 /* Array+Extension.swift */; };
+		A771A979281721FB00A9CEF8 /* StatisticsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A771A978281721FB00A9CEF8 /* StatisticsViewController.swift */; };
 		A7B6946227F5B83200DEE06E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7B6946127F5B83200DEE06E /* AppDelegate.swift */; };
 		A7B6946B27F5B83300DEE06E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A7B6946A27F5B83300DEE06E /* Assets.xcassets */; };
 		A7B6946E27F5B83300DEE06E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A7B6946C27F5B83300DEE06E /* LaunchScreen.storyboard */; };
@@ -24,7 +27,10 @@
 		A70EC89C27F5D91100F6C190 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		A70EC89E27F5DBCB00F6C190 /* SecondaryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondaryViewController.swift; sourceTree = "<group>"; };
 		A70EC8A027F5FAAB00F6C190 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		A71115A72819BC11002A90E1 /* CollectionViewLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewLayout.swift; sourceTree = "<group>"; };
+		A71115B8283541E3002A90E1 /* HistoryGameTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryGameTableViewCell.swift; sourceTree = "<group>"; };
 		A7641BFD2812E0B300D98D11 /* Array+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Extension.swift"; sourceTree = "<group>"; };
+		A771A978281721FB00A9CEF8 /* StatisticsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsViewController.swift; sourceTree = "<group>"; };
 		A7B6945E27F5B83200DEE06E /* SenlaTask4.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SenlaTask4.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A7B6946127F5B83200DEE06E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A7B6946A27F5B83300DEE06E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -62,6 +68,7 @@
 		A7B6946027F5B83200DEE06E /* SenlaTask4 */ = {
 			isa = PBXGroup;
 			children = (
+				A71115A72819BC11002A90E1 /* CollectionViewLayout.swift */,
 				A7B6946127F5B83200DEE06E /* AppDelegate.swift */,
 				A7B6946A27F5B83300DEE06E /* Assets.xcassets */,
 				A7B6946C27F5B83300DEE06E /* LaunchScreen.storyboard */,
@@ -72,6 +79,8 @@
 				A70EC8A027F5FAAB00F6C190 /* SettingsViewController.swift */,
 				A70EC89E27F5DBCB00F6C190 /* SecondaryViewController.swift */,
 				A7641BFD2812E0B300D98D11 /* Array+Extension.swift */,
+				A771A978281721FB00A9CEF8 /* StatisticsViewController.swift */,
+				A71115B8283541E3002A90E1 /* HistoryGameTableViewCell.swift */,
 			);
 			path = SenlaTask4;
 			sourceTree = "<group>";
@@ -146,12 +155,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A771A979281721FB00A9CEF8 /* StatisticsViewController.swift in Sources */,
 				A70EC89927F5D81200F6C190 /* TabBarController.swift in Sources */,
 				A70EC89B27F5D8B000F6C190 /* NavigationController.swift in Sources */,
 				A70EC8A127F5FAAB00F6C190 /* SettingsViewController.swift in Sources */,
 				A7B6946227F5B83200DEE06E /* AppDelegate.swift in Sources */,
 				A7641BFE2812E0B300D98D11 /* Array+Extension.swift in Sources */,
+				A71115A82819BC11002A90E1 /* CollectionViewLayout.swift in Sources */,
 				A70EC89D27F5D91100F6C190 /* MainViewController.swift in Sources */,
+				A71115B9283541E3002A90E1 /* HistoryGameTableViewCell.swift in Sources */,
 				A70EC89F27F5DBCB00F6C190 /* SecondaryViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
